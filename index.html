@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Key Sequence Detection</title>
+  <!-- Unicorns and rainbows - no, really -->
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<body>
+  <script>
+
+    // Empty array - will store buttons pressed
+    const pressed = [];
+
+    // Code that needs to be entered for unicorns to happen
+    const secretCode = 'lilla';
+
+    window.addEventListener('keyup', (e) => {
+      //console.log(e.key);
+      // Adds the keys pressed to the 'pressed' array
+      pressed.push(e.key);
+
+      // Starts looking from the back of the array and only listens to the same length as that of the secret code
+      pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+      // If the array of pressed buttons includes the secret message,
+      // Logs message in the console
+      if (pressed.join('').includes(secretCode)) {
+        console.log('Fluffyfied!');
+        // Makes it SO (uni)corny... The more you click, the fluffier it gets
+        cornify_add();
+      }
+      //console.log(pressed);
+    });
+  </script>
+</body>
+
+</html>
